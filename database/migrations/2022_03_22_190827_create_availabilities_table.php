@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('availabilities', function (Blueprint $table) {
             $table->id();
+            $table->date('data');
+            $table->boolean('disponibilità');
+            $table->foreignId('id_apartment')->constrained('apartments', 'id')->cascadeOnDelete();
+            $table->foreignId('id_line')->constrained('line','id')->cascadeOnDelete();
             $table->timestamps();
         });
     }
