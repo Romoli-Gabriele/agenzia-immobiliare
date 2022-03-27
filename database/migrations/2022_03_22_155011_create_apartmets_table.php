@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('apartmets', function (Blueprint $table) {
+        Schema::create('apartments', function (Blueprint $table) {
             $table->id();
             $table->string('indirizzo');
             $table->integer('prezzogiorno');
             $table->integer('numerocamere');
-            $table->integer('postiLletto');
+            $table->integer('postiletto');
             $table->boolean('usocucina');
             $table->boolean('parcheggio');
             $table->foreignId('id_quartiere')->constrained('neighborhoods', 'id')->onDelete('cascade');
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apartmets');
+        Schema::dropIfExists('apartments');
     }
 };
