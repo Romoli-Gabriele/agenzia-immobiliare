@@ -11,6 +11,11 @@ class Availability extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'data',
+        'disponibilità',
+    ];
+
     public function apartment():BelongsTo {
         return $this->belongsTo(Apartment::class,'id_apartment');
     }

@@ -11,6 +11,13 @@ class Line extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'datainiziale',
+        'datafianle',
+        'costo',
+        'confermarigha'
+    ];
+
     public function reservation():HasOne{
         return $this->hasOne(Reservation::class,'id_prenotazione');
     }
