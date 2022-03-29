@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $userRole = config('roles.models.role')::where('name', '=', 'User')->first();
+        $clienteRole = config('roles.models.role')::where('name', '=', 'Cliente')->first();
         $adminRole = config('roles.models.role')::where('name', '=', 'Admin')->first();
         $permissions = config('roles.models.permission')::all();
 
@@ -41,7 +41,7 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
             ]);
 
-            $newUser->attachRole($userRole);
+            $newUser->attachRole($clienteRole);
         }
     }
 }

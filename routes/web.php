@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\ApartmentController;
+use App\Http\Controllers\AvailabilityController;
+use App\Http\Controllers\LineController;
+use App\Http\Controllers\NeighborhoodController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('apartments', ApartmentController::class);
+Route::resource('avaibilities', AvailabilityController::class);
+Route::resource('lines', LineController::class);
+Route::resource('neighborhoods', NeighborhoodController::class);
+Route::resource('photos', PhotoController::class);
+Route::resource('reservations', ReservationController::class);
