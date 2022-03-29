@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->date('dataprenotazione');
             $table->boolean('confermaprenotazione');
-            $table->foreignId('id_user')->constrained('id','users')->cascadeOnDelete();
+            $table->foreignId('id_user')->constrained('users','id')->cascadeOnDelete();
             $table->timestamps();
         });
     }

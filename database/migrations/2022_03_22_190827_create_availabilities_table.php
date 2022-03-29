@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('data');
             $table->boolean('disponibilità');
             $table->foreignId('id_apartment')->constrained('apartments', 'id')->cascadeOnDelete();
-            $table->foreignId('id_line')->constrained('line','id')->cascadeOnDelete();
+            $table->foreignId('id_line')->constrained('lines','id')->cascadeOnDelete();
             $table->timestamps();
         });
     }

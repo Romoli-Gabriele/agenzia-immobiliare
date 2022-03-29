@@ -20,19 +20,38 @@ class Apartment extends Model
         'parcheggio',
         'note'
     ];
-    public function quartiere(): HasOne {
+    public static function addNew($attributes)
+    {
+        $apartment = new Apartment([
+            'indirizzo' => $attributes->indirizzo,
+            'prezzogiorno' => $attributes->prezzogiorno,
+            'numerocamere' => $attributes->numerocamere,
+            'postiletto' => $attributes->postiletto,
+            'usocucina' => $attributes->usocucina,
+            'parcheggio' => $attributes->parcheggio,
+            'note' => $attributes->note,
+        ]);
+        $apartment->quartiere()->associate($attributes->neighborhood);
+        $apartment->proprietario()->associate($attributes->owner);
+    }
+    public function quartiere(): HasOne
+    {
         return $this->hasOne(Neighborhood::class, 'id_quartiere');
     }
-    public function proprietario(): HasOne{
+    public function proprietario(): HasOne
+    {
         return $this->hasOne(User::class, 'id_proprietario');
     }
-    public function foto(): HasMany{
+    public function foto(): HasMany
+    {
         return $this->hasMany(Photo::class);
     }
-    public function prenotazioni(): HasMany{
+    public function prenotazioni(): HasMany
+    {
         return $this->hasMany(Reservation::class);
     }
-    public function disponibilità(): HasMany{
+    public function disponibilità(): HasMany
+    {
         return $this->hasMany(Availability::class);
     }
 }

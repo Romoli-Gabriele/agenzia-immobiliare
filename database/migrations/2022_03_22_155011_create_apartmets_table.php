@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('usocucina');
             $table->boolean('parcheggio');
             $table->foreignId('id_quartiere')->constrained('neighborhoods', 'id')->onDelete('cascade');
-            $table->foreignId('id_proprietario')->constrained('companies', 'id')->onDelete('cascade');;
+            $table->foreignId('id_proprietario')->constrained('users', 'id')->onDelete('cascade');;
             $table->text('note');
             $table->timestamps();
         });

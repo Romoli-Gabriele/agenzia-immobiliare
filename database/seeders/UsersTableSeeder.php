@@ -25,6 +25,11 @@ class UsersTableSeeder extends Seeder
             $newUser = config('roles.models.defaultUser')::create([
                 'name'     => 'Admin',
                 'email'    => 'admin@admin.com',
+                'codicefiscale' => 'rmlgrl04c11d612g',
+                'indirizzo' => 'Via san giovanni 3 Firenze',
+                'telefono' => '0552345678',
+                'cellulare' => '3348762090',
+                'iban' => null,
                 'password' => bcrypt('password'),
             ]);
 
@@ -36,9 +41,14 @@ class UsersTableSeeder extends Seeder
 
         if (config('roles.models.defaultUser')::where('email', '=', 'user@user.com')->first() === null) {
             $newUser = config('roles.models.defaultUser')::create([
-                'name'     => 'User',
-                'email'    => 'user@user.com',
-                'password' => bcrypt('password'),
+                'name' => 'Cliente',
+                'codicefiscale',
+                'email',
+                'password',
+                'indirizzo',
+                'telefono',
+                'cellulare',
+                'iban'
             ]);
 
             $newUser->attachRole($clienteRole);

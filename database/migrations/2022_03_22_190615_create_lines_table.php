@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('datafinale');
             $table->double('costo');
             $table->boolean('confermarigha');
-            $table->foreignId('id_prenotazione')->constrained('availabilities','id');
+            $table->foreignId('id_prenotazione')->constrained('reservations','id');
             $table->foreignId('id_appartamento')->constrained('apartments','id');
             $table->timestamps();
         });
