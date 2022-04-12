@@ -15,6 +15,7 @@ class UsersTableSeeder extends Seeder
     {
         $clienteRole = config('roles.models.role')::where('name', '=', 'Cliente')->first();
         $adminRole = config('roles.models.role')::where('name', '=', 'Admin')->first();
+        $proprietarioRole = config('roles.models.role')::where('name', '=', 'Proprietario')->first();
         $permissions = config('roles.models.permission')::all();
 
         /*
@@ -42,16 +43,30 @@ class UsersTableSeeder extends Seeder
         if (config('roles.models.defaultUser')::where('email', '=', 'user@user.com')->first() === null) {
             $newUser = config('roles.models.defaultUser')::create([
                 'name' => 'Cliente',
-                'codicefiscale',
-                'email',
-                'password',
-                'indirizzo',
-                'telefono',
-                'cellulare',
-                'iban'
+                'codicefiscale' => 'ascert12c32d432j',
+                'email' => 'user@user.com',
+                'password' => bcrypt('password'),
+                'indirizzo' => 'via a caso 12 Dublino',
+                'telefono' => '0124345560',
+                'cellulare' => '3313456523',
+                'iban' => null
             ]);
 
             $newUser->attachRole($clienteRole);
+        }
+        if (config('roles.models.defaultUser')::where('email', '=', 'proprietario@user.com')->first() === null) {
+            $newUser = config('roles.models.defaultUser')::create([
+                'name' => 'Proprietario',
+                'codicefiscale' => 'ascert12c32d432j',
+                'email' => 'proprietario@user.com',
+                'password' => bcrypt('password'),
+                'indirizzo' => 'via ricasoli 17 Roma',
+                'telefono' => '0124765560',
+                'cellulare' => '3313489523',
+                'iban' => 'IT12K345678998'
+            ]);
+
+            $newUser->attachRole($proprietarioRole);
         }
     }
 }
